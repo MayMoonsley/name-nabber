@@ -7,6 +7,7 @@ function Question(question, key, answerType = 'text') {
 Question.prototype.ask = function() {
     app.setQuestionText(this.question);
     app.setCurrentValue('');
+    app.focus();
 }
 
 app = {
@@ -20,13 +21,16 @@ app = {
     setQuestionText: function(text) {
         document.getElementById('text').innerText = text;
     },
+    focus: function() {
+        document.getElementById('answer').focus();
+    },
     questionIndex:0,
     acc:{},
     currentQuestion: function() {
         return this.questions[this.questionIndex];
     },
     currentValue: function() {
-        document.getElementById('answer').value;
+        return document.getElementById('answer').value;
     },
     setCurrentValue: function(t) {
         document.getElementById('answer').value = t;
