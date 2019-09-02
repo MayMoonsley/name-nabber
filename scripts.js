@@ -35,7 +35,7 @@ app = {
         this.acc[this.currentQuestion().key] = this.currentValue();
         this.questionIndex++;
         if (this.questionIndex >= this.questions.length) {
-            this.save(acc);
+            this.save(this.acc);
             this.acc = {};
             this.questionIndex = 0;
         }
@@ -50,5 +50,12 @@ app = {
 }
 
 function init() {
-    app.show();   
+    window.onkeypress = function(e) {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            if (app.currentValue()) {
+                app.advance();
+            }
+        }
+    }
+    app.show();
 }
