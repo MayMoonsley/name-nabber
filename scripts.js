@@ -52,6 +52,17 @@ app = {
     setCurrentValue: function(t) {
         document.getElementById('answer').value = t;
     },
+    updateObjectURL: function(json) {
+        if (!json) {
+            json = JSON.stringify(this.answers);
+        }
+        let blob = new Blob([json], {type: 'application/json'});
+        if (this.objectURL) {
+            window.URL.revokeObjectURL(this.objectURL);
+        }
+        this.objectURL = window.URL.createObjectURL(blob);
+        document.getElementById('totalAnswers').href = this.objectURL;
+    },
     advance: function() {
         this.acc[this.currentQuestion().key] = this.currentValue();
         this.questionIndex++;
@@ -68,7 +79,10 @@ app = {
     },
     save: function(acc) {
         this.answers.push(acc);
-        localStorage.setItem('answers', JSON.stringify(this.answers));
+        let json = JSON.stringify(this.answers);
+        console.log(json);
+        localStorage.setItem('answers', json);
+        this.updateObjectURL(json);
     },
     wipe: function() {
         this.answers = [];
@@ -90,4 +104,5 @@ function init() {
         }
     }
     app.show();
+    app.updateObjectURL();
 }
