@@ -7,7 +7,16 @@ function Question(question, key, answerType = 'text') {
 Question.prototype.ask = function() {
     app.setQuestionText(this.question);
     app.setCurrentValue('');
-    app.focus();
+    switch (this.answerType) {
+        case 'wait':
+            window.setTimeout(function() {app.advance()}, 2000);
+            app.hideField();
+            break;
+        case 'text':
+            app.focus();
+            app.showField();
+            break;
+    }
 }
 
 app = {
@@ -23,6 +32,12 @@ app = {
     },
     focus: function() {
         document.getElementById('answer').focus();
+    },
+    showField: function() {
+        document.getElementById('answer').classList.remove('hidden');
+    },
+    hideField: function() {
+        document.getElementById('answer').classList.add('hidden');
     },
     questionIndex:0,
     answers:[],
