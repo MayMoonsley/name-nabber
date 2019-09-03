@@ -69,6 +69,11 @@ app = {
     save: function(acc) {
         this.answers.push(acc);
         localStorage.setItem('answers', JSON.stringify(this.answers));
+    },
+    wipe: function() {
+        this.answers = [];
+        localStorage.setItem('answers', '[]');
+        this.show();
     }
 }
 
