@@ -23,5 +23,6 @@ input {
     top: -16px;
     left: 16px;
     font-size: 2em;
+    font-weight: bold;
     opacity: 0.5;
 }
