@@ -1,4 +1,4 @@
-body {
+#container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,4 +16,12 @@ input {
 
 .hidden {
     display: none;
+}
+
+#totalAnswers {
+    position: absolute;
+    top: -16px;
+    left: 16px;
+    font-size: 2em;
+    opacity: 0.5;
 }
