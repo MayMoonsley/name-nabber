@@ -1,0 +1,15 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+input {
+    font-size: 1.25em;
+}
