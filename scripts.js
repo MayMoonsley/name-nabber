@@ -64,7 +64,9 @@ app = {
         document.getElementById('totalAnswers').href = this.objectURL;
     },
     advance: function() {
-        this.acc[this.currentQuestion().key] = this.currentValue();
+        if (this.currentQuestion().key) {
+            this.acc[this.currentQuestion().key] = this.currentValue();
+        }
         this.questionIndex++;
         if (this.questionIndex >= this.questions.length) {
             this.save(this.acc);
