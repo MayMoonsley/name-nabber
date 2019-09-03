@@ -22,6 +22,7 @@ Question.prototype.ask = function() {
 app = {
     questions:[
         new Question('Hi! What\'s your name?', 'name'),
+        new Question('What\'s your email address?', 'name'),
         new Question('What\'s your major?', 'major'),
         new Question('What do you want to contribute?', 'contrib'),
         new Question('What do you want to learn?', 'learn'),
