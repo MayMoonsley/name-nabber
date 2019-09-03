@@ -25,6 +25,7 @@ app = {
         document.getElementById('answer').focus();
     },
     questionIndex:0,
+    answers:[],
     acc:{},
     currentQuestion: function() {
         return this.questions[this.questionIndex];
@@ -47,13 +48,19 @@ app = {
     },
     show: function() {
         this.currentQuestion().ask();
+        document.getElementById('totalAnswers').innerText = this.answers.length;
     },
     save: function(acc) {
-
+        this.answers.push(acc);
+        localStorage.setItem('answers', JSON.stringify(this.answers));
     }
 }
 
 function init() {
+    let prev = localStorage.getItem('answers');
+    if (prev) {
+        app.answers = JSON.parse(prev);
+    }
     window.onkeypress = function(e) {
         if (e.key === 'Enter' || e.keyCode === 13) {
             if (app.currentValue()) {
