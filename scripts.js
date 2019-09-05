@@ -93,12 +93,18 @@ app = {
     },
     fullscreen: false,
     toggleFullscreen: function() {
-      this.fullscreen = !this.fullscreen;
-      if (this.fullscreen) {
+      if (!this.fullscreen) {
         document.body.requestFullscreen();
-        document.getElementById('fullscreen').innerText = '✕';
       } else {
         document.exitFullscreen();
+      }
+      app.focus();
+    },
+    setFullscreenStatus: function(isFullscreen) {
+      app.fullscreen = isFullscreen;
+      if (isFullscreen) {
+        document.getElementById('fullscreen').innerText = '✕';
+      } else {
         document.getElementById('fullscreen').innerText = '⛶';
       }
     }
@@ -111,6 +117,9 @@ function init() {
     }
     document.getElementById('fullscreen').onclick = function() {
       app.toggleFullscreen();
+    }
+    document.onfullscreenchange = function(e) {
+      app.setFullscreenStatus(!!document.fullscreenElement);
     }
     window.onkeypress = function(e) {
         if (e.key === 'Enter' || e.keyCode === 13) {
