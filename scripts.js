@@ -90,6 +90,17 @@ app = {
         this.answers = [];
         localStorage.setItem('answers', '[]');
         this.show();
+    },
+    fullscreen: false,
+    toggleFullscreen: function() {
+      this.fullscreen = !this.fullscreen;
+      if (this.fullscreen) {
+        document.body.requestFullscreen();
+        document.getElementById('fullscreen').innerText = '✕';
+      } else {
+        document.exitFullscreen();
+        document.getElementById('fullscreen').innerText = '⛶';
+      }
     }
 }
 
@@ -99,7 +110,7 @@ function init() {
         app.answers = JSON.parse(prev);
     }
     document.getElementById('fullscreen').onclick = function() {
-      document.body.requestFullscreen();
+      app.toggleFullscreen();
     }
     window.onkeypress = function(e) {
         if (e.key === 'Enter' || e.keyCode === 13) {
