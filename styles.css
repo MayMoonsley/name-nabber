@@ -1,3 +1,11 @@
+html {
+  background: #FFF;
+}
+
+body {
+  background: #FFF;
+}
+
 #container {
     display: flex;
     align-items: center;
@@ -23,12 +31,25 @@ input {
     display: none;
 }
 
+.floatButton {
+  position: absolute;
+  font-size: 2em;
+  font-weight: bold;
+  display: block;
+}
+
+.floatButton > a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 #totalAnswersContainer {
-    position: absolute;
     top: -16px;
     left: 16px;
-    font-size: 2em;
-    font-weight: bold;
     opacity: 0.5;
-    display: block;
+}
+
+#fullscreenContainer {
+  top: -16px;
+  right: 16px;
 }

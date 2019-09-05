@@ -98,6 +98,9 @@ function init() {
     if (prev) {
         app.answers = JSON.parse(prev);
     }
+    document.getElementById('fullscreen').onclick = function() {
+      document.body.requestFullscreen();
+    }
     window.onkeypress = function(e) {
         if (e.key === 'Enter' || e.keyCode === 13) {
             if (app.currentValue()) {
